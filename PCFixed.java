@@ -42,6 +42,7 @@ class EvenThread implements Runnable {
         int i = 0;
         while(true) {
             q.printEven(i);
+            q.printOdd((i));
             i += 2;
         }
     }
