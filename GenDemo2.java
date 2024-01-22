@@ -1,47 +1,39 @@
-// A simple generic class.
-// Here, T is a type parameter that
-// will be replaced by a real type
-// when an object of type Gen is created.
-class Gen2<T> {
-    T ob; // declare an object of type T
+// A simple generic class with two type
+// parameters: T and V.
+class TwoGen<T, V> {
+    T ob1;
+    V ob2;
     // Pass the constructor a reference to
-// an object of type T.
-    Gen2(T o) {
-        ob = o;
+// an object of type T and an object of type V.
+    TwoGen(T o1, V o2) {
+        ob1 = o1;
+        ob2 = o2;
     }
-    // Return ob.
-    T getob() {
-        return ob;
-    }
-    // Show type of T.
-    void showType() {
+    // Show types of T and V.
+    void showTypes() {
         System.out.println("Type of T is " +
-                ob.getClass().getName());
+                ob1.getClass().getName());
+        System.out.println("Type of V is " +
+                ob2.getClass().getName());
+    }
+    T getob1() {
+        return ob1;
+    }
+    V getob2() {
+        return ob2;
     }
 }
-// Demonstrate the generic class.
-class GenDemo2 {
+// Demonstrate TwoGen.
+class SimpGen {
     public static void main(String args[]) {
-// Create a Gen reference for Integers.
-        Gen2<Integer> iOb;
-// Create a Gen<Integer> object and assign its
-// reference to iOb. Notice the use of autoboxing
-// to encapsulate the value 88 within an Integer object.
-        iOb = new Gen2<Integer>(88);
-// Show the type of data used by iOb.
-        iOb.showType();
-// Get the value in iOb. Notice that
-// no cast is needed.
-        int v = iOb.getob();
+        TwoGen<Integer, String> tgObj =
+                new TwoGen<Integer, String>(88, "Generics");
+// Show the types.
+        tgObj.showTypes();
+// Obtain and show values.
+        int v = tgObj.getob1();
         System.out.println("value: " + v);
-        System.out.println();
-// Create a Gen object for Strings.
-        Gen2<String> strOb = new Gen2<String>("Generics Test");
-// Show the type of data used by strOb.
-        strOb.showType();
-// Get the value of strOb. Again, notice
-// that no cast is needed.
-        String str = strOb.getob();
+        String str = tgObj.getob2();
         System.out.println("value: " + str);
     }
 }
